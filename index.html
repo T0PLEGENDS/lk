@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Top Legends | Clã de Stumble Guys</title>
+<meta name="description" content="Top Legends, clã competitivo de Stumble Guys. Entre no Discord e faça parte.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#e8112d;--red2:#ff3b52;--bg:#070405;--card:#110809;--line:#2a1419;--mut:#b9a9ad;--gold:#ffc83d;--silver:#d5dbe3;--bronze:#d98b4e;--cut:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--bg);color:#fff;font:500 1.15rem/1.55 'Barlow Condensed',sans-serif;overflow-x:hidden;counter-reset:s}
+h1,h2,.brand span,.card b,.pos,.board-t,.cr,.foot strong,.total b{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.02em}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.i{width:1em;height:1em;fill:currentColor;display:inline-block;vertical-align:-.12em}
+[hidden]{display:none!important}
+body.lock{overflow:hidden}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:.55rem 5vw;background:#050203;border-bottom:3px solid var(--red)}
+.brand{display:flex;align-items:center;gap:.8rem;font-size:1.5rem}
+.brand img{width:42px;height:42px;object-fit:cover;border:2px solid #fff;border-radius:4px}
+.burger{display:flex;flex-direction:column;justify-content:space-between;width:46px;height:40px;padding:11px 10px;background:var(--red);border:0;cursor:pointer;transition:background .2s}
+.burger i{display:block;height:3px;background:#fff;transition:background .2s}
+.burger:hover{background:#fff}.burger:hover i{background:#000}
+.menu{position:fixed;top:0;bottom:0;right:0;width:min(340px,88vw);display:flex;flex-direction:column;gap:.2rem;padding:5.5rem 1.6rem 2rem;background:var(--red);transform:translateX(105%);visibility:hidden;transition:transform .35s,visibility 0s .35s;overflow-y:auto}
+.menu.open{transform:none;visibility:visible;transition:transform .35s}
+.menu a{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:1.7rem;padding:.35rem 0;border-bottom:2px solid rgba(0,0,0,.25);transition:padding .2s,color .2s}
+.menu a:hover,.menu a.on{padding-left:.8rem;color:#000}
+.menu a.menu-cta,.menu a.menu-cta:hover{margin-top:1rem;background:#000;color:#fff;text-align:center;border:0;padding:.7rem}
+.menu-close{position:absolute;top:1rem;right:1.2rem;display:flex;gap:.4rem;align-items:center;background:#000;color:#fff;border:0;padding:.5rem 1rem;font:700 1rem 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;cursor:pointer}
+.menu-close:hover{background:#fff;color:#000}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.7);opacity:0;pointer-events:none;transition:opacity .3s;z-index:49}
+.scrim.open{opacity:1;pointer-events:auto}
+.nav-r{display:flex;align-items:center;gap:.8rem}
+.langs{display:flex;gap:2px;background:#000;border:2px solid rgba(255,255,255,.25)}
+.langs button{border:0;background:none;color:var(--mut);font:700 1rem 'Barlow Condensed',sans-serif;letter-spacing:.1em;padding:.4rem .75rem;cursor:pointer;transition:background .2s,color .2s}
+.langs button:hover{color:#fff}
+.langs button.on{background:var(--red);color:#fff}
+
+/* BOTÕES */
+.btn{display:inline-block;padding:.9rem 2rem;font:700 1.1rem 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;cursor:pointer;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));transition:background .25s,color .25s,transform .25s}
+.btn-red{background:var(--red);color:#fff;border:0}
+.btn-red:hover{background:#fff;color:#000;transform:translateY(-3px)}
+.btn-line{color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.btn-line:hover{background:#fff;color:#000;transform:translateY(-3px)}
+.big{font-size:1.5rem;padding:1.1rem 3rem}
+.btns{display:flex;flex-wrap:wrap;gap:1rem;animation:rise .9s .3s both}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:2rem;padding:8rem 5vw 8rem;margin-bottom:-3rem;position:relative;overflow:hidden;clip-path:polygon(0 0,100% 0,100% calc(100% - 3rem),0 100%);
+ background:radial-gradient(rgba(255,255,255,.09) 1.4px,transparent 1.8px) 0 0/20px 20px,linear-gradient(112deg,transparent 0 60%,var(--red) 60% 73%,transparent 73%),var(--bg)}
+.hero-title-container{display:flex;align-items:center;gap:1.5rem;animation:rise .9s both}
+.hero-title-logo{width:clamp(60px,12vw,110px);height:clamp(60px,12vw,110px);object-fit:cover;border:3px solid #fff;box-shadow:4px 4px 0 var(--red);border-radius:6px}
+.hero h1{font-size:clamp(3.5rem,11vw,9rem);line-height:.88}
+.hero h1 span{display:block}
+.hero h1 .o{color:transparent;-webkit-text-stroke:2px #fff}
+.hero h1 span:first-child{text-shadow:6px 6px 0 var(--red)}
+.hero p{max-width:44ch;font-size:1.4rem;color:#ddd;border-left:5px solid var(--red);padding-left:1rem;margin:1.6rem 0 2rem;animation:rise .9s .15s both}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}}
+.hero-art{position:relative;display:grid;place-items:center;min-height:380px}
+.ring{position:absolute;pointer-events:none}
+.r1{width:min(420px,84vw);aspect-ratio:1;border:3px solid #fff;transform:rotate(45deg);animation:spin 40s linear infinite}
+.r2{width:min(300px,64vw);aspect-ratio:1;background:#000;border:3px solid var(--red);transform:translate(26px,26px)}
+@keyframes spin{to{transform:rotate(405deg)}}
+.hero-logo{width:min(300px,64vw);position:relative;z-index:2;border:4px solid #fff;box-shadow:-14px -14px 0 var(--red);animation:rise 1s .2s both}
+.float{position:absolute;z-index:3;font-size:1.7rem;padding:.6rem;background:#000;border:2px solid var(--red);color:var(--red2);animation:bob 4s ease-in-out infinite}
+.f1{top:4%;right:4%}.f2{bottom:6%;left:4%;animation-delay:-1.3s}.f3{bottom:22%;right:0;animation-delay:-2.6s}
+@keyframes bob{50%{transform:translateY(-14px)}}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+
+/* SEÇÕES */
+.sec{position:relative;max-width:1200px;margin:auto;padding:6rem 5vw}
+.sec::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%)}
+#requisitos::before,#discord::before{background:var(--red)}
+#staffs::before{background:#fff}
+.sec h2{counter-increment:s;font-size:clamp(2.6rem,7vw,5rem);line-height:1;margin-bottom:1.6rem}
+.sec h2::before{content:"0" counter(s);display:block;font:700 1.05rem 'Barlow Condensed',sans-serif;letter-spacing:.4em;color:var(--red2);margin-bottom:.3rem}
+.sec h2::after{content:"";display:block;width:90px;height:6px;background:var(--red);margin-top:.7rem}
+#requisitos h2::before,#discord h2::before{color:#000}
+#requisitos h2::after,#discord h2::after{background:#fff}
+#staffs h2{color:#000}#staffs h2::before{color:var(--red)}
+.lead{max-width:56ch;font-size:1.3rem;color:var(--mut);margin-bottom:2rem}
+.note{margin-top:2rem;font-weight:700;font-size:1.3rem;letter-spacing:.08em;text-transform:uppercase;color:#000}
+.grid{display:grid;gap:1.2rem}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.canais{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+/* CARDS */
+.card{position:relative;background:var(--card);border-top:5px solid var(--red);padding:1.7rem;clip-path:polygon(0 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%);transition:opacity .7s,transform .3s,background .3s}
+.card:hover{transform:translateY(-6px);background:var(--red)}
+.card:hover p,.card:hover .ico{color:#fff}
+.card b{display:block;font-size:1.5rem;margin-bottom:.4rem}
+.card p{color:var(--mut)}
+.ico{display:block;font-size:2.6rem;line-height:1;margin-bottom:.8rem;color:var(--red2);transition:color .3s}
+#requisitos .card{background:#0a0507;border-top-color:#fff}
+#requisitos .card:hover{background:#fff;color:#000}
+#requisitos .card:hover p{color:#333}
+#requisitos .card:hover .ico{color:var(--red)}
+.about{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.about blockquote{grid-column:1/-1;background:var(--red);padding:2rem;font:italic 700 clamp(1.5rem,3.2vw,2.4rem)/1.2 'Barlow Condensed',sans-serif;text-transform:uppercase;clip-path:polygon(0 0,100% 0,100% 100%,var(--cut) 100%,0 calc(100% - var(--cut)))}
+.staff.owner{border-top-color:#fff;background:#1d0a0f}
+.off{max-width:820px;border-top:0;border-left:8px solid var(--red)}
+.canais .btn{margin-top:1rem;padding:.6rem 1.4rem}
+
+/* PLACA DO RANK */
+#rankBox{margin-top:2.2rem}
+.board{background:#0a0507;border:3px solid #fff;box-shadow:12px 12px 0 var(--red);max-width:820px}
+.board-h{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.4rem;padding:1rem 1.6rem;background:var(--red)}
+.board-t{font-size:2rem}
+.board-s{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.95rem}
+.board ol{list-style:none}
+.row{display:flex;align-items:center;gap:1rem;padding:.6rem 1.6rem;border-bottom:1px solid var(--line);transition:background .2s,color .2s}
+.row:hover{background:#fff;color:#000}.row:hover .pos{color:var(--red)}
+.pos{font-size:1.7rem;min-width:2.6rem;color:var(--mut)}
+.nm{flex:1;font-weight:700;font-size:1.25rem;overflow-wrap:anywhere}
+.cr{font-size:1.2rem;display:flex;gap:.4rem;align-items:center}.cr .i{color:var(--red2)}
+.row.k1{background:linear-gradient(90deg,rgba(255,200,61,.22),transparent);box-shadow:inset 6px 0 var(--gold)}.row.k1 .pos{color:var(--gold)}
+.row.k2{background:linear-gradient(90deg,rgba(213,219,227,.16),transparent);box-shadow:inset 6px 0 var(--silver)}.row.k2 .pos{color:var(--silver)}
+.row.k3{background:linear-gradient(90deg,rgba(217,139,78,.18),transparent);box-shadow:inset 6px 0 var(--bronze)}.row.k3 .pos{color:var(--bronze)}
+.board .total{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.6rem;background:#fff;color:#000;font-weight:700;letter-spacing:.1em}
+.total b{font-size:1.8rem;display:flex;gap:.4rem;align-items:center}.total .i{color:var(--red)}
+
+/* DISCORD + FOOTER */
+.cta{text-align:center}
+.cta h2::after{margin-inline:auto}
+#discord .lead{color:#fff;margin-inline:auto}
+#discord .btn-red{background:#000}
+#discord .btn-red:hover{background:#fff;color:#000}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding:2.2rem 5vw;background:#000;border-top:4px solid var(--red)}
+.foot-brand{display:flex;align-items:center;gap:.8rem}
+.foot-logo{width:40px;height:40px;object-fit:cover;border:2px solid #fff;border-radius:4px}
+.foot strong{display:block;font-size:2rem;line-height:1}.foot span{color:var(--mut)}
+.foot nav{display:flex;gap:1.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.foot nav a:hover{color:var(--red2)}
+
+@media(max-width:900px){
+ .hero{grid-template-columns:1fr;text-align:center;padding-top:7rem}
+ .hero-title-container{justify-content:center}
+ .hero p{margin-inline:auto;text-align:left}.btns{justify-content:center}
+ .hero-art{order:-1;min-height:320px}
+ .about,.g3{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ .sec{padding:4rem 5vw}
+ .row{padding:.55rem 1rem;gap:.7rem}.board-h,.board .total{padding:.9rem 1rem}
+ .board{box-shadow:8px 8px 0 var(--red)}
+}
+@media(max-width:420px){.langs button{padding:.4rem .5rem}.nav-r{gap:.5rem}.brand span{font-size:1.2rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#inicio" class="brand">
+    <img src="assets/logo.png" alt="Logo Top Legends">
+    <span>TOP LEGENDS</span>
+  </a>
+  <div class="nav-r">
+    <div class="langs" role="group" aria-label="Idioma">
+      <button type="button" data-l="pt">PT</button>
+      <button type="button" data-l="en">EN</button>
+      <button type="button" data-l="es">ES</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div>
+  <nav class="menu" id="menu" aria-label="Menu principal">
+    <button class="menu-close" id="menuClose" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/></svg> Sair</button>
+    <a href="#inicio">Início</a>
+    <a href="#requisitos">Requisitos</a>
+    <a href="#quem-somos">Quem Somos</a>
+    <a href="#rank">Rank</a>
+    <a href="#staffs">Staffs</a>
+    <a href="#indisponivel">Indisponível</a>
+    <a href="#canais">Canais</a>
+    <a href="#discord" class="menu-cta">Discord</a>
+  </nav>
+</header>
+<div class="scrim" id="scrim"></div>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-text">
+      <div class="hero-title-container">
+        <img src="assets/logo.png" alt="Logo Top Legends" class="hero-title-logo">
+        <h1><span>TOP</span><span class="o">LEGENDS</span></h1>
+      </div>
+      <p>Clã competitivo de Stumble Guys focado em reunir jogadores dedicados e comprometidos em evoluir juntos até o topo.</p>
+      <div class="btns">
+        <a class="btn btn-red" href="https://discord.gg/d4ndw2jzX" target="_blank" rel="noopener">ENTRAR NO DISCORD</a>
+        <a class="btn btn-line" href="#requisitos">VER REQUISITOS</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="ring r1"></div><div class="ring r2"></div>
+      <img src="assets/logo.png" alt="" class="hero-logo">
+      <span class="float f1" data-i="crown"></span><span class="float f2" data-i="trophy"></span><span class="float f3" data-i="flame"></span>
+    </div>
+  </section>
+
+  <section class="sec" id="requisitos">
+    <h2>REQUISITOS PARA ENTRAR</h2>
+    <div class="grid g4" id="reqGrid"></div>
+    <p class="note rv">Apenas jogadores comprometidos serão aceitos.</p>
+  </section>
+
+  <section class="sec" id="quem-somos">
+    <h2>QUEM SOMOS</h2>
+    <div class="about rv">
+      <div class="card"><span class="ico" data-i="gamepad"></span><b>Clã de Stumble Guys</b><p>Um clã competitivo feito para quem quer evoluir junto.</p></div>
+      <div class="card"><span class="ico" data-i="target"></span><b>Objetivo</b><p>Chegar ao topo entre os melhores clãs globais.</p></div>
+      <div class="card launch"><span class="ico" data-i="calendar"></span><b>Lançamento</b><p>O Top Legends (HP) foi lançado em <strong>10 de setembro de 2025</strong>.</p></div>
+      <blockquote>“Nosso foco é construir uma comunidade forte, competitiva e unida.”</blockquote>
+    </div>
+  </section>
+
+  <section class="sec" id="rank">
+    <h2>TOP 20 COROAS</h2>
+    <p class="lead">Este Top 20 é atualizado a cada Crown Tournament.</p>
+    <button class="btn btn-red" id="rankBtn" aria-expanded="false" aria-controls="rankBox">VER TOP 20</button>
+    <div id="rankBox" hidden>
+      <div class="board rv">
+        <div class="board-h"><span class="board-t">TOP 20 COROAS</span><span class="board-s">Atualizado a cada Crown Tournament</span></div>
+        <ol id="rankGrid"></ol>
+        <p class="total" id="rankTotal"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="staffs">
+    <h2>EQUIPE DE STAFFS</h2>
+    <div class="grid g4" id="staffGrid"></div>
+  </section>
+
+  <section class="sec" id="indisponivel">
+    <h2>O QUE NÃO ESTÁ DISPONÍVEL</h2>
+    <div class="card off rv" id="offCard"></div>
+  </section>
+
+  <section class="sec" id="canais">
+    <h2>NOSSOS CANAIS</h2>
+    <div class="grid g3 canais" id="chGrid"></div>
+  </section>
+
+  <section class="sec cta" id="discord">
+    <h2>ENTRE NO NOSSO SERVIDOR!</h2>
+    <p class="lead">Faça parte da comunidade oficial do Top Legends e participe dos recrutamentos, eventos e comunicação do clã.</p>
+    <a class="btn btn-red big" href="https://discord.gg/d4ndw2jzX" target="_blank" rel="noopener">ENTRAR NO DISCORD</a>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-brand">
+    <img src="assets/logo.png" alt="Logo Top Legends" class="foot-logo">
+    <div>
+      <strong>TOP LEGENDS</strong>
+      <span>Stumble Guys Clan • Desde 10/09/2025</span>
+    </div>
+  </div>
+  <nav>
+    <a href="https://discord.gg/d4ndw2jzX" target="_blank" rel="noopener">Discord</a>
+    <a href="#inicio">Início</a>
+    <a href="#requisitos">Requisitos</a>
+    <a href="#rank">Rank</a>
+  </nav>
+</footer>
+
+<script>
+// ===== EDITE AQUI: todos os dados do site ficam neste bloco =====
+const DISCORD = "https://discord.gg/d4ndw2jzX";
+
+const REQUISITOS = [
+  { icon: "trophy", titulo: "Ter mais de 3.000 coroas", desc: "Uma base sólida de vitórias na arena." },
+  { icon: "medal", titulo: "Ter pelo menos 3 Campeões", desc: "Experiência real em campeonatos." },
+  { icon: "flame", titulo: "Ser um jogador focado", desc: "Foco e dedicação junto ao time." },
+  { icon: "crown", titulo: "Campeão em todas as temporadas", desc: "Pegar Campeão em cada temporada." }
+];
+
+// Atualize a cada Crown Tournament (a ordem da lista define a posição)
+const RANK = [
+  ["Lzffz22", 10980], ["(squishy)", 10740], ["@Voidz", 7889], ["Marcus .", 7283],
+  ["Tnz7'", 6687], ["lyzer", 6252], ["zKznx7.", 6022], ["Isaac|Bde", 5731],
+  ["Lxrdzzk'10K", 4925], ["chill>", 4807], ["salones kn", 4080], ["-rell", 3790],
+  ["MexicoElMjr", 3246], ["@Danilo'ZM$", 3040], ["xPedrin :/", 2844], ["China|SX", 2678],
+  ["ImPilar", 2575], ["Bote 50", 2435], ["slayt:/", 2264], ["Zxw00", 2180]
+];
+
+const STAFFS = [
+  { nome: "Lyzer", cargo: "Owner" },
+  { nome: "Pilar", cargo: "Gerente Geral" },
+  { nome: "XPedrin", cargo: "Diretor" },
+  { nome: "TN", cargo: "Supervisor" },
+  { nome: "Lv / Voidz / Zkznx", cargo: "Administradores" }
+];
+
+const INDISPONIVEL = {
+  titulo: "XClã",
+  texto: "Nosso foco é totalmente interno e voltado à evolução individual dos membros do clã. Não realizamos confrontos diretos contra outros clãs do cenário."
+};
+
+const CANAIS = [
+  { nome: "Pilar", cargo: "Gerente Geral", url: "https://www.youtube.com/@PilarHP" },
+  { nome: "Lyzer", cargo: "Dono / Criador", url: "https://www.youtube.com/@LyzerXGamIng" }
+];
+
+// Ícones vermelhos (SVG)
+const P = {
+  crown: '<path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/>',
+  trophy: '<path d="M6 3h12v5c0 3.3-2.7 6-6 6S6 11.3 6 8zM3 4h2v3a2 2 0 01-2-2zm18 0h-2v3a2 2 0 002-2zM11 14h2v4h3v3H8v-3h3z"/>',
+  medal: '<circle cx="12" cy="15" r="6"/><path d="M8 2h3l1 5-3 1zM16 2h-3l-1 5 3 1z"/>',
+  flame: '<path d="M12 2c1 4 6 6 6 12a6 6 0 01-12 0c0-3 2-4 3-7 1 1 2 2 2 4 2-2 1-6 1-9z"/>',
+  star: '<path d="M12 2l3 7 7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.500 9 9z"/>',
+  gamepad: '<path fill-rule="evenodd" d="M6 8h12a4 4 0 014 4v3a3 3 0 01-5 2l-2-2h-6l-2 2a3 3 0 01-5-2v-3a4 4 0 014-4zm1 2v1H6v2h1v1h2v-1h1v-2H9v-1zm9 1a1 1 0 100 2 1 1 0 000-2z"/>',
+  target: '<path fill-rule="evenodd" d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 4a6 6 0 110 12 6 6 0 010-12zm0 4a2 2 0 100 4 2 2 0 000-4z"/>',
+  ban: '<path fill-rule="evenodd" d="M12 2a10 10 0 100 20 10 10 0 000-20zM5 12a7 7 0 0111.300-5.500l-9.800 9.800A7 7 0 015 12zm14 0a7 7 0 01-11.300 5.500l9.800-9.800A7 7 0 0119 12z"/>',
+  play: '<path d="M8 5v14l11-7z"/>',
+  calendar: '<path fill-rule="evenodd" d="M7 2h2v2h6V2h2v2h3v18H4V4h3zM6 9v11h12V9z"/>'
+};
+const icon = (n) => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${P[n]}</svg>`;
+
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => n.toLocaleString("pt-BR");
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+document.querySelectorAll('a[href*="discord.gg"]').forEach((a) => (a.href = DISCORD));
+
+// Requisitos
+$("reqGrid").innerHTML = REQUISITOS.map(
+  (r) => `<div class="card rv"><span class="ico">${icon(r.icon)}</span><b>${r.titulo}</b><p>${r.desc}</p></div>`
+).join("");
+
+// Rank Top 20 (uma placa só)
+$("rankGrid").innerHTML = RANK.map(([nome, coroas], i) =>
+  `<li class="row${i < 3 ? " k" + (i + 1) : ""}"><span class="pos">${String(i + 1).padStart(2, "0")}</span><span class="nm">${esc(nome)}</span><span class="cr">${fmt(coroas)} ${icon("crown")}</span></li>`
+).join("");
+$("rankTotal").innerHTML = `<span>TOTAL DO TOP 20</span><b>${fmt(RANK.reduce((s, r) => s + r[1], 0))} ${icon("crown")}</b>`;
+
+// Staffs
+$("staffGrid").innerHTML = STAFFS.map(
+  (s, i) => `<div class="card staff rv${i === 0 ? " owner" : ""}"><span class="ico">${icon(i === 0 ? "crown" : "star")}</span><b>${s.nome}</b><p>${s.cargo}</p></div>`
+).join("");
+
+// Indisponível
+$("offCard").innerHTML = `<span class="ico">${icon("ban")}</span><b>${INDISPONIVEL.titulo}</b><p>${INDISPONIVEL.texto}</p>`;
+
+// Canais
+$("chGrid").innerHTML = CANAIS.map(
+  (c) => `<div class="card rv"><span class="ico">${icon("play")}</span><b>${c.nome}</b><p>${c.cargo}</p><a class="btn btn-line" href="${c.url}" target="_blank" rel="noopener">INSCREVER-SE</a></div>`
+).join("");
+
+// Ícones estáticos do HTML
+document.querySelectorAll("[data-i]").forEach((el) => (el.innerHTML = icon(el.dataset.i)));
+document.querySelectorAll(".about,.note,.off").forEach((el) => el.classList.add("rv"));
+
+// Botão Ver top 20
+const rankBtn = $("rankBtn"), rankBox = $("rankBox");
+rankBtn.addEventListener("click", () => {
+  const open = rankBox.hidden;
+  rankBox.hidden = !open;
+  rankBtn.textContent = open ? "ESCONDER TOP 20" : "VER TOP 20";
+  if (typeof setLang === "function") setLang(lang);
+  rankBtn.setAttribute("aria-expanded", open);
+});
+
+// Menu hamburger
+const burger = $("burger"), menu = $("menu");
+const setMenu = (open) => {
+  menu.classList.toggle("open", open);
+  $("scrim").classList.toggle("open", open);
+  document.body.classList.toggle("lock", open);
+  burger.setAttribute("aria-expanded", open);
+};
+burger.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+$("menuClose").addEventListener("click", () => setMenu(false));
+$("scrim").addEventListener("click", () => setMenu(false));
+document.addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
+
+// Revelação ao entrar na tela
+const io = new IntersectionObserver(
+  (entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("in");
+    io.unobserve(e.target);
+  }),
+  { threshold: 0.2 }
+);
+document.querySelectorAll(".rv").forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 80 + "ms";
+  io.observe(el);
+});
+
+// Link ativo no menu
+const links = [...menu.querySelectorAll("a")];
+const spy = new IntersectionObserver(
+  (entries) => entries.forEach((e) => {
+    if (e.isIntersecting)
+      links.forEach((l) => l.classList.toggle("on", l.getAttribute("href") === "#" + e.target.id));
+  }),
+  { rootMargin: "-45% 0px -50% 0px" }
+);
+document.querySelectorAll("main section[id]").forEach((s) => spy.observe(s));
+
+// ===== IDIOMAS (PT / EN / ES) =====
+const D = [
+["Início","Home","Inicio"],["Requisitos","Requirements","Requisitos"],["Quem Somos","About Us","Quiénes Somos"],
+["Rank","Rank","Ranking"],["Staffs","Staff","Staff"],["Indisponível","Unavailable","No disponible"],["Canais","Channels","Canales"],["Sair","Close","Cerrar"],
+["Clã competitivo de Stumble Guys focado em reunir jogadores dedicados e comprometidos em evoluir juntos até o topo.","A competitive Stumble Guys clan focused on gathering dedicated, committed players who grow together all the way to the top.","Clan competitivo de Stumble Guys enfocado en reunir jugadores dedicados y comprometidos que evolucionan juntos hasta la cima."],
+["ENTRAR NO DISCORD","JOIN THE DISCORD","ENTRAR AL DISCORD"],["VER REQUISITOS","VIEW REQUIREMENTS","VER REQUISITOS"],
+["REQUISITOS PARA ENTRAR","REQUIREMENTS TO JOIN","REQUISITOS PARA ENTRAR"],["QUEM SOMOS","ABOUT US","QUIÉNES SOMOS"],
+["TOP 20 COROAS","TOP 20 CROWNS","TOP 20 CORONAS"],["EQUIPE DE STAFFS","STAFF TEAM","EQUIPO DE STAFF"],
+["O QUE NÃO ESTÁ DISPONÍVEL","WHAT IS NOT AVAILABLE","LO QUE NO ESTÁ DISPONIBLE"],["NOSSOS CANAIS","OUR CHANNELS","NUESTROS CANALES"],
+["ENTRE NO NOSSO SERVIDOR!","JOIN OUR SERVER!","¡ENTRA A NUESTRO SERVIDOR!"],
+["Apenas jogadores comprometidos serão aceitos.","Only committed players will be accepted.","Solo se aceptarán jogadores comprometidos."],
+["Ter mais de 3.000 coroas","Have over 3,000 crowns","Tener más de 3.000 coronas"],["Uma base sólida de vitórias na arena.","A solid base of wins in the arena.","Una base sólida de victorias en la arena."],
+["Ter pelo menos 3 Campeões","Have at least 3 Champion titles","Tener al menos 3 Campeones"],["Experiência real em campeonatos.","Real tournament experience.","Experiencia real en campeonatos."],
+["Ser um jogador focado","Be a focused player","Ser un jugador enfocado"],["Foco e dedicação junto ao time.","Focus and dedication alongside the team.","Enfoque y dedicación junto al equipo."],
+["Campeão em todas as temporadas","Champion in every season","Campeón en todas las temporadas"],["Pegar Campeão em cada temporada.","Win Champion in each season.","Conseguir Campeón en cada temporada."],
+["Clã de Stumble Guys","Stumble Guys Clan","Clan de Stumble Guys"],["Um clã competitivo feito para quem quer evoluir junto.","A competitive clan built for those who want to grow together.","Un clan competitivo hecho para quienes quieren evolucionar juntos."],
+["Objetivo","Goal","Objetivo"],["Chegar ao topo entre os melhores clãs globais.","Reach the top among the best global clans.","Llegar a la cima entre los mejores clanes globales."],
+["Lançamento","Launch","Lanzamiento"],["O Top Legends (HP) foi lançado em","Top Legends (HP) launched on","Top Legends (HP) fue lançado el"],
+["10 de setembro de 2025","September 10, 2025","10 de septiembre de 2025"],
+["“Nosso foco é construir uma comunidade forte, competitiva e unida.”","“Our focus is building a strong, competitive and united community.”","“Nuestro enfoque es construir una comunidad fuerte, competitiva y unida.”"],
+["Este Top 20 é atualizado a cada Crown Tournament.","This Top 20 is updated after every Crown Tournament.","Este Top 20 se actualiza en cada Crown Tournament."],
+["VER TOP 20","VIEW TOP 20","VER TOP 20"],["ESCONDER TOP 20","HIDE TOP 20","OCULTAR TOP 20"],
+["Atualizado a cada Crown Tournament","Updated every Crown Tournament","Actualizado en cada Crown Tournament"],["TOTAL DO TOP 20","TOP 20 TOTAL","TOTAL DEL TOP 20"],
+["Gerente Geral","General Manager","Gerente General"],["Diretor","Director","Director"],["Administradores","Administrators","Administradores"],
+["XClã","XClan","XClan"],
+["Nosso foco é totalmente interno e voltado à evolução individual dos membros do clã. Não realizamos confrontos diretos contra outros clãs do cenário.","Our focus is entirely internal and dedicated to the individual growth of clan members. We do not hold direct matches against other clans on the scene.","Nuestro enfoque es totalmente interno y orientado a la evolución individual de los miembros del clan. No realizamos enfrentamientos directos contra outros clanes del escenario."],
+["Dono / Criador","Owner / Creator","Dueño / Creador"],["INSCREVER-SE","SUBSCRIBE","SUSCRIBIRSE"],
+["Faça parte da comunidade oficial do Top Legends e participe dos recrutamentos, eventos e comunicação do clã.","Join the official Top Legends community and take part in recruitments, events and clan communication.","Forma parte de la comunidad oficial de Top Legends y participa en los reclutamientos, eventos y comunicación del clan."],
+["Stumble Guys Clan • Desde 10/09/2025","Stumble Guys Clan • Since Sep 10, 2025","Stumble Guys Clan • Desde 10/09/2025"]
+];
+const I18N = {};
+D.forEach(([p, e, s]) => (I18N[p] = { en: e, es: s }));
+const HTML_LANG = { pt: "pt-BR", en: "en", es: "es" };
+const TITLES = { pt: "Top Legends | Clã de Stumble Guys", en: "Top Legends | Stumble Guys Clan", es: "Top Legends | Clan de Stumble Guys" };
+let lang = "pt";
+
+function setLang(l) {
+  lang = l;
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let n;
+  while ((n = w.nextNode())) {
+    if (n.parentElement.closest("script,style")) continue;
+    const raw = n.__pt !== undefined ? n.__pt : n.nodeValue;
+    const k = raw.trim();
+    const t = I18N[k];
+    if (!t) continue;
+    n.__pt = raw;
+    n.nodeValue = raw.replace(k, () => (l === "pt" ? k : t[l] || k));
+  }
+  document.documentElement.lang = HTML_LANG[l];
+  document.title = TITLES[l];
+  document.querySelectorAll(".langs button").forEach((b) => b.classList.toggle("on", b.dataset.l === l));
+  try { localStorage.setItem("tl-lang", l); } catch (e) {}
+}
+document.querySelectorAll(".langs button").forEach((b) => b.addEventListener("click", () => setLang(b.dataset.l)));
+let saved = "pt";
+try { saved = localStorage.getItem("tl-lang") || "pt"; } catch (e) {}
+setLang(HTML_LANG[saved] ? saved : "pt");
+</script>
+</body>
+</html>
